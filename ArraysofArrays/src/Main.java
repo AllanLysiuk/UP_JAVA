@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -98,10 +99,124 @@ class Tasks {
             a[i][y] = tmp;
         }
     }
+    public static double task9(double[][] a) {
+        double sum = 0;
+        int ind = -1;
+        for (int i = 0; i < a[0].length; ++i) {
+            double tmpSum = 0;
+            for (int j = 0; j < a.length; ++j) {
+                tmpSum += a[j][i];
+            }
+            if (tmpSum > sum) {
+                sum = tmpSum;
+                ind = i;
+            }
+        }
+        System.out.println("Number of column: " + ind + " has the biggest sum");
+        return sum;
+    }
+
+    public static ArrayList task10(int[][] a) {
+
+        ArrayList ab = new ArrayList<Integer>();
+        for (int i = 0; i < a.length; ++i) {
+            if (a[i][i] > 0) {
+                ab.add(a[i][i]);
+            }
+        }
+        return ab;
+    }
+
+    public static void task11() {
+        int[][] a = new int[10][20];
+        Random random = new Random();
+        for (int i = 0; i < 10; ++i) {
+            for (int j = 0; j < 20; ++j) {
+                a[i][j] = random.nextInt(16);
+            }
+        }
+        for (int i = 0; i < 10; ++i) {
+            for (int j = 0; j < 20; ++j) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.print("Indexes of rows where number 5 consists 3 or more times: ");
+        for (int i = 0; i < 10; i++) {
+            int counter = 0;
+            for (int j = 0; j < 20; ++j) {
+                if (a[i][j] == 5) {
+                    counter++;
+                }
+            }
+            if (counter >= 3) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+
+    public static void task12(int[][] a) {
+        for (int i = 0; i < a.length; ++i) {
+            Arrays.sort(a[i]);
+        }
+    }
+
+
+    public static int[][] task14(int m, int n) {
+        int[][] a = new int[m][n];
+        Random random = new Random();
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                a[i][j] = random.nextInt(2);
+            }
+        }
+        for (int i = 0; i < n; ++i) {
+            int counter = 0;
+            for (int j = 0; j < m; ++j) {
+                if (a[j][i] == 1) {
+                    counter++;
+                }
+            }
+            int current = 0;
+            while (counter != i) {
+                if (counter > i && a[current][i] == 1) {
+                    a[current][i] = 0;
+                    counter--;
+                }
+                if (counter < i && a[current][i] == 0) {
+                    a[current][i] = 1;
+                    counter++;
+                }
+                current++;
+            }
+        }
+        return a;
+    }
+
+    public static void task15(int[][] a) {
+        int max = a[0][0];
+        for (int i = 0; i < a.length; ++i) {
+            for (int j = 0; j < a[i].length; ++j) {
+                if (a[i][j] > max) {
+                    max = a[i][j];
+                }
+            }
+        }
+        for (int i = 0; i < a.length; ++i) {
+            for (int j = 0; j < a[i].length; ++j) {
+                if (a[i][j] % 2 == 1) {
+                    a[i][j] = max;
+                }
+            }
+        }
+    }
 }
 
 public class Main {
     public static void main(String args[]){
+
+
 
     }
 }

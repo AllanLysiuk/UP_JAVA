@@ -1,0 +1,10 @@
+#clock { 
+    color: var(--h1-color);
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 40pt;
+}
+
+.content {
+    margin: auto;
+}
